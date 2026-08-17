@@ -97,6 +97,29 @@ For example:
 ```bash
 python <script_name>.py
 ```
+## Execution Order
+
+### Synthetic Experiments
+
+The synthetic experiment files should generally be executed in the following order:
+
+Generate the datasets using synthetic.py, tight_boundary.py, and combined_dataset.py.
+Train the Random Forest and Naive Bayes classifiers using the corresponding model scripts.
+Run the LIME, SHAP, and Counterfactual explanation scripts for the required dataset and classifier.
+
+The dataset CSV files and serialized model files required by the explanation scripts are generated automatically by the preceding scripts.
+
+### FCC Experiments
+
+The FCC experiments follow the general processing sequence:
+
+Place 2K_Horizontal.mat in the working directory.
+Run freeman_chain_code_updated.py to preprocess the interferogram and extract Freeman Chain Code features.
+Run FCC_fringe_labeling_tool.py to create the labeled fringe dataset.
+Run the FCC classification scripts to train and save the required classifiers and encoders.
+Run the corresponding LIME, SHAP, and Counterfactual explanation scripts.
+
+Intermediate CSV, NumPy, image, model, and encoder files are generated during these stages and are therefore not included separately in the repository.
 
 ## Purpose
 
